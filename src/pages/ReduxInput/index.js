@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 // import * as actions from './actions';
-import {setUsernameAction} from "./actions";
+import {submitUsernameAction} from "./actions";
 
 function mapStateToProps(state) {
   return {
-    form: state.manualFormReducer
+    auth: state.auth
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setUsernameAction: (payload) => dispatch(setUsernameAction(payload))
+    submitUsernameAction: (payload) => dispatch(submitUsernameAction(payload))
   }
 }
 
@@ -22,12 +22,14 @@ function validate(values) {
 
   if(!values.username) {
     errors.username = 'required'
-  } else if (values.username.length < 5) {
-    errors.username = 'Username harus lebih dari 5 karakter'
+  } else if (values.username === 'akuanakindonesia') {
+    errors.username = 'Nama pengguna atau password salah'
   }
 
-  if(!values.agreement) {
-    errors.agreement = 'required'
+  if(!values.password) {
+    errors.password = 'required'
+  } else if (values.password === 'sehatdankuat') {
+    errors.password = 'Nama pengguna atau password salah'
   }
 
   return errors;

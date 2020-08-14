@@ -6,3 +6,10 @@ export function setUsernameAction(payload) {
     payload
   }
 }
+
+export function submitUsernameAction(payload) {
+  return {
+    type: EXAMPLE.SUBMIT_USERNAME_PASSWORD,
+    payload
+  }
+}

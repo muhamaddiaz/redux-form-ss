@@ -18,7 +18,11 @@ class ReduxInput extends React.Component {
   }
 
   _handleSubmit = (values) => {
-    console.log(values)
+    const { history, submitUsernameAction } = this.props;
+
+    submitUsernameAction(values);
+
+    history.push('/new-page');
   }
 
   render() {
@@ -28,7 +32,7 @@ class ReduxInput extends React.Component {
       <form onSubmit={handleSubmit(this._handleSubmit)}>
         <h1>Hello Redux input</h1>
         <Field name={'username'} component={this._customInput} label={'Username'} type={'text'} />
-        <Field name={'agreement'} component={this._customInput} label={'Agreement'} type={'checkbox'} />
+        <Field name={'password'} component={this._customInput} label={'Password'} type={'password'} />
         <button type={'submit'}>submit</button>
       </form>
     )
